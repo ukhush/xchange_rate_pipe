@@ -1,14 +1,16 @@
 name: Azure Python 3.9
-VENV = crud_ops_env
-PYTHON = $(VENV)/bin/python3
-PIP = $(VENV)/bin/pip
-GOOGLE_CRED_FILE= '/Users/umairk/Downloads/ukhushn-proj2-kkey.json'
 
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+    
+variables:
+  VENV: crud_ops_env
+  PYTHON: $(VENV)/bin/python3
+  PIP: $(VENV)/bin/pip
+  GOOGLE_CRED_FILE= "/Users/umairk/Downloads/ukhushn-proj2-kkey.json"
 
 jobs:
   build:
