@@ -1,10 +1,5 @@
 name: Azure Python 3.9
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-    
+on: [push]
 env:
   VENV: crud_ops_env
   PYTHON: $(VENV)/bin/python3
