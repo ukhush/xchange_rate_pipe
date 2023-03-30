@@ -1,5 +1,4 @@
 name: Azure Python 3.9
-
 on:
   push:
     branches: [ "main" ]
@@ -14,22 +13,21 @@ variables:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
-
     - name: setup python 3.9
-      run: actions/setup-python@v1
+      uses: actions/setup-python@v1
       with:
         python-version: 3.9
 
     - name: Install dependencies
-      $(VENV)/bin/activate: requirements.txt
+      run: |
+        $(VENV)/bin/activate: requirements.txt
         python3 -m venv $(VENV)
         $(PIP) install -r requirements.txt
 
     - name: Run check
-      run: $(VENV)/bin/activate
+      run: |
+        $(VENV)/bin/activate
         $(PYTHON) unit_test.py --google_cred_path $(GOOGLE_CRED_FILE)
