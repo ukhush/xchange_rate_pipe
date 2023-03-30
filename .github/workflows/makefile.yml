@@ -5,7 +5,7 @@ on:
   pull_request:
     branches: [ "main" ]
     
-variables:
+env:
   VENV: crud_ops_env
   PYTHON: $(VENV)/bin/python3
   PIP: $(VENV)/bin/pip
