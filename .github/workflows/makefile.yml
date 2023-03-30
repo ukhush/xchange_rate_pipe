@@ -2,7 +2,7 @@ name: Azure Python 3.9
 on: [push]
 env:
   VENV: crud_ops_env
-  GOOGLE_CRED_FILE: '/Users/umairk/Downloads/ukhushn-proj2-kkey.json'
+  GOOGLE_CRED_FILE: 'ukhushn-proj2-kkey.json'
 
 jobs:
   build:
