@@ -10,7 +10,7 @@ variables:
   VENV: crud_ops_env
   PYTHON: $(VENV)/bin/python3
   PIP: $(VENV)/bin/pip
-  GOOGLE_CRED_FILE= '/Users/umairk/Downloads/ukhushn-proj2-kkey.json'
+  GOOGLE_CRED_FILE= /Users/umairk/Downloads/ukhushn-proj2-kkey.json
 
 jobs:
   build:
