@@ -13,9 +13,9 @@ phases:
       python: 3.9
     commands:
       - echo $BQkey
-      - pip3 install virtualenv
+      - pip3 install venv
       - python3 -m venv $venv_name
-      - . $venv_name/bin/activate
+      - source ./$venv_name/bin/activate
       - pip install --upgrade pip
       - pip install -r requirements.txt
       - mkdir test-reports
