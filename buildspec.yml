@@ -12,7 +12,7 @@ phases:
     runtime-versions:
       python: 3.9
     commands:
-      - echo $BQkey
+      - echo $BQkey["ggkey"]
       - python3 -m venv $venv_name
       - source ./$venv_name/bin/activate
       - pip install --upgrade pip
