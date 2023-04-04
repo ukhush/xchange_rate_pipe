@@ -1,0 +1,28 @@
+version: 0.1
+
+run-as: ukhushnood
+
+env:
+  variables:
+    venv_name: "crud_ops_env"
+
+  secrets-manager:
+    BQkey: arn:aws:secretsmanager:us-east-2:511772300310:secret:bigquery_proj_key-g9VBjR
+  git-credential-helper: no | yes
+
+phases:
+  install:
+    run-as: ukhushnood
+    on-failure: ABORT | CONTINUE
+    runtime-versions:
+      python: 3.9
+    commands:
+      - echo $BQkey
+      - apt-get install -y python3-venv
+      - python3 -m venv $venv_name
+      - . $venv_name/bin/activate
+      - pip install --upgrade pip
+      - pip install .
+      - pip install -r requirements.txt
+      - rm -rf dspt
+      - mkdir test-reports
