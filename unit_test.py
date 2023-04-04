@@ -3,9 +3,10 @@ from src.bigquery_crud_ops import BQdataset
 import os
 import argparse
 from google.oauth2 import service_account
+import json
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--google_key", required=True)
+parser.add_argument("--google_key", type=json.loads(), required=True)
 
 print(args)
 args = parser.parse_args()
