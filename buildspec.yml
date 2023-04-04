@@ -21,4 +21,4 @@ phases:
   build:
     commands:
       - source ./$venv_name/bin/activate
-      - python3 unit_test.py --google_key $BQkey
+      - python3 unit_test.py --google_key "$BQkey"
