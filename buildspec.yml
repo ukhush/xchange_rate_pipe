@@ -13,7 +13,7 @@ phases:
       python: 3.9
     commands:
       - echo $BQkey
-      - apt-get install -y python3-venv
+      - yum -y install python3-venv
       - python3 -m venv $venv_name
       - . $venv_name/bin/activate
       - pip install --upgrade pip
