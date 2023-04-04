@@ -8,6 +8,9 @@ import sys
 
 print(sys.argv)
 
+print(json.loads(sys.argv[2]))
+
+
 parser = argparse.ArgumentParser()
 parser.add_argument("--google_key", type=json.loads(), required=True)
 
