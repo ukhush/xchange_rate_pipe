@@ -4,7 +4,7 @@ env:
   variables:
     venv_name: crud_ops_env
   secrets-manager:
-    BQkey: arn:aws:secretsmanager:us-east-2:511772300310:secret:bigquery_proj_key-g9VBjR
+    BQkey: "arn:aws:secretsmanager:us-east-2:511772300310:secret:ggkey-E2ay7B"
 
 phases:
   install:
