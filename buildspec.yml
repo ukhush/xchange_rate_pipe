@@ -13,7 +13,7 @@ phases:
       python: 3.9
     commands:
       - echo $BQkey
-      - sudo apt-get install virtualenv
+      - yum install virtualenv
       - python3 -m venv $venv_name
       - . $venv_name/bin/activate
       - pip install --upgrade pip
