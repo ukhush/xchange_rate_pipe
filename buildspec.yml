@@ -1,7 +1,5 @@
 version: 0.2
 
-run-as: ukhushnood
-
 env:
   variables:
     venv_name: crud_ops_env
@@ -10,7 +8,6 @@ env:
 
 phases:
   install:
-    run-as: ukhushnood
     on-failure: ABORT
     runtime-versions:
       python: 3.9
