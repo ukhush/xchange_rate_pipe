@@ -6,10 +6,6 @@ from google.oauth2 import service_account
 import json
 import sys
 
-print(sys.argv)
-
-print(json.loads(sys.argv[2]))
-
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--google_key", required=True)
@@ -17,7 +13,6 @@ parser.add_argument("--google_key", required=True)
 args = parser.parse_args()
 
 
-# os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = args.google_key
 
 # Downloaded credentials in JSON format
 
@@ -53,7 +48,6 @@ def unit_test_class_dataset(dataset_name):
     return print('PASSED')
 
 
-# FIRE UP THE CLIENT
-# client = bigquery.Client()
 # Test the func
-unit_test_class_dataset('test1')
+if __name__ == "__main__":
+    unit_test_class_dataset('test1')
