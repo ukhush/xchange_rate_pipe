@@ -6,7 +6,7 @@ from google.oauth2 import service_account
 import json
 import sys
 
-print(sys.argv)
+print(sys.argv[2])
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--google_key", type=json.loads(), required=True)
