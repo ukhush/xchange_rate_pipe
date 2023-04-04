@@ -12,7 +12,7 @@ phases:
     runtime-versions:
       python: 3.9
     commands:
-      - echo $BQkey
+      - echo "$BQkey"
       - python3 -m venv $venv_name
       - source ./$venv_name/bin/activate
       - pip install --upgrade pip
@@ -21,4 +21,4 @@ phases:
   build:
     commands:
       - source ./$venv_name/bin/activate
-      - python3 unit_test.py --google_key !!str $BQkey 
+      - python3 unit_test.py --google_key "$BQkey"
