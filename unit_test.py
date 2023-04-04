@@ -6,9 +6,10 @@ from google.oauth2 import service_account
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--google_key", required=True)
-args = parser.parse_args()
 
 print(args)
+args = parser.parse_args()
+
 
 # os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = args.google_key
 
