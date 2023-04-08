@@ -44,8 +44,10 @@ class TESTSforDATASETclass(unittest.TestCase):
         self.assertEqual(outmsg, test_msg, msg=outmsg)
 
 if __name__ == '__main__':
+    print(os.environ)
+    TESTSforDATASETclass.google_key = os.environ.get('BQGkey')
 
-    TESTSforDATASETclass.google_key = os.environ.get('BQGkey', TESTSforDATASETclass.google_key)
+    print(os.environ)
     unittest.main()
 
 
