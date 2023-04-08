@@ -23,6 +23,7 @@ class TESTSforDATASETclass(unittest.TestCase):
         "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/ukhushn-try%40ukhushn-proj2.iam.gserviceaccount.com"
     }
 
+    print(google_key)
     gcp_sa_credentials["private_key"] = json.loads(google_key)
 
     project_id = gcp_sa_credentials["project_id"]
