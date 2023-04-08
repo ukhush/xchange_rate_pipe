@@ -8,7 +8,7 @@ import unittest
 class TESTSforDATASETclass(unittest.TestCase):
 
 
-    google_key = os.environ.get('BQGkey')
+    google_key = os.environ.get('BQkey')
 
     gcp_sa_credentials = {
         "type": "service_account",
@@ -23,7 +23,6 @@ class TESTSforDATASETclass(unittest.TestCase):
         "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/ukhushn-try%40ukhushn-proj2.iam.gserviceaccount.com"
     }
 
-    print(google_key)
     gcp_sa_credentials["private_key"] = json.loads(google_key)
 
     project_id = gcp_sa_credentials["project_id"]
@@ -37,9 +36,8 @@ class TESTSforDATASETclass(unittest.TestCase):
 
     def test_1(self):
         bqdataset = BQdataset(self.client)
-        project = bqdataset.project_id
         outmsg = bqdataset.create_dataset('TEST_dataset', 'US')
-        test_msg = f"Created dataset {project}.TEST_dataset"
+        test_msg = f"Created dataset {self.project_id}.TEST_dataset"
         self.assertEqual(outmsg, test_msg, msg=outmsg)
 
     def test_2(self):
