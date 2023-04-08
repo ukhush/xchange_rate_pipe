@@ -31,6 +31,9 @@ class TESTSforDATASETclass(unittest.TestCase):
     client = bigquery.Client(project=project_id, credentials=credentials)
 
 
+    def test_0(self):
+
+        print(os.environ)
 
     def test_1(self):
         bqdataset = BQdataset(self.client)
