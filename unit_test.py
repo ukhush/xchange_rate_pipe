@@ -8,21 +8,6 @@ import unittest
 class TESTSforDATASETclass(unittest.TestCase):
 
 
-    def test_1(self):
-        bqdataset = BQdataset(client)
-        project = bqdataset.project()
-        outmsg = bqdataset.create_dataset('TEST_dataset', 'US')
-        test_msg = f"Created dataset {project}.TEST_dataset"
-        self.assertEqual(outmsg, test_msg, msg=outmsg)
-
-    def test_2(self):
-        bqdataset = BQdataset(client)
-        outmsg = bqdataset.delete_dataset('TEST_dataset')
-        test_msg = "Deleted dataset TEST_dataset"
-        self.assertEqual(outmsg, test_msg, msg=outmsg)
-
-if __name__ == '__main__':
-
     google_key = os.environ.get('BQGkey')
 
     gcp_sa_credentials = {
@@ -46,6 +31,21 @@ if __name__ == '__main__':
     client = bigquery.Client(project=project_id, credentials=credentials)
 
 
+
+    def test_1(self):
+        bqdataset = BQdataset(client)
+        project = bqdataset.project()
+        outmsg = bqdataset.create_dataset('TEST_dataset', 'US')
+        test_msg = f"Created dataset {project}.TEST_dataset"
+        self.assertEqual(outmsg, test_msg, msg=outmsg)
+
+    def test_2(self):
+        bqdataset = BQdataset(client)
+        outmsg = bqdataset.delete_dataset('TEST_dataset')
+        test_msg = "Deleted dataset TEST_dataset"
+        self.assertEqual(outmsg, test_msg, msg=outmsg)
+
+if __name__ == '__main__':
     unittest.main()
 
 
