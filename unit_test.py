@@ -8,7 +8,8 @@ import unittest
 
 
 class TESTSforDATASETclass(unittest.TestCase):
-    google_key = ''
+
+    google_key = os.environ.get('BQGkey')
 
     gcp_sa_credentials = {
         "type": "service_account",
@@ -44,10 +45,6 @@ class TESTSforDATASETclass(unittest.TestCase):
         self.assertEqual(outmsg, test_msg, msg=outmsg)
 
 if __name__ == '__main__':
-    print(os.environ)
-    TESTSforDATASETclass.google_key = os.environ.get('BQGkey')
-
-    print(os.environ)
     unittest.main()
 
 
