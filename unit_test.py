@@ -37,7 +37,7 @@ class TESTSforDATASETclass(unittest.TestCase):
 
     def test_1(self):
         bqdataset = BQdataset(self.client)
-        project = bqdataset.project()
+        project = bqdataset.project_id
         outmsg = bqdataset.create_dataset('TEST_dataset', 'US')
         test_msg = f"Created dataset {project}.TEST_dataset"
         self.assertEqual(outmsg, test_msg, msg=outmsg)
