@@ -9,23 +9,7 @@ import unittest
 
 class TESTSforDATASETclass(unittest.TestCase):
 
-    def TEST1(self):
-        bqdataset = BQdataset(client)
-        project = bqdataset.project()
-        outmsg = bqdataset.create_dataset('TEST_dataset', 'US')
-        test_msg = f"Created dataset {project}.TEST_dataset"
-        self.assertEqual(outmsg, test_msg, msg=outmsg)
 
-    def TEST2(self):
-        bqdataset = BQdataset(client)
-        outmsg = bqdataset.delete_dataset('TEST_dataset')
-        test_msg = "Deleted dataset TEST_dataset"
-        self.assertEqual(outmsg, test_msg, msg=outmsg)
-
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--google_key", required=True)
-    args = parser.parse_args()
     # Downloaded credentials in JSON format
 
     gcp_sa_credentials = {
@@ -47,4 +31,26 @@ if __name__ == '__main__':
     credentials = service_account.Credentials.from_service_account_info(gcp_sa_credentials)
     client = bigquery.Client(project=project_id, credentials=credentials)
 
-    unittest.main()
+    def TEST1(self):
+        bqdataset = BQdataset(client)
+        project = bqdataset.project()
+        outmsg = bqdataset.create_dataset('TEST_dataset', 'US')
+        test_msg = f"Created dataset {project}.TEST_dataset"
+        self.assertEqual(outmsg, test_msg, msg=outmsg)
+
+    def TEST2(self):
+        bqdataset = BQdataset(client)
+        outmsg = bqdataset.delete_dataset('TEST_dataset')
+        test_msg = "Deleted dataset TEST_dataset"
+        self.assertEqual(outmsg, test_msg, msg=outmsg)
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--google_key", required=True)
+    args = parser.parse_args()
+
+    suite_case = unittest.TestLoader().loadTestsFromTestCase(TESTSforDATASETclass)
+    test_suite = unittest.TestSuite([suite_case])
+    unittest.TextTestRunner(verbosity=1, failfast=True, buffer=False).run(test_suite)
+
+
