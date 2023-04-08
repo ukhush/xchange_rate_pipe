@@ -5,6 +5,10 @@ from google.oauth2 import service_account
 import json
 import unittest
 
+parser = argparse.ArgumentParser()
+parser.add_argument("--google_key", required=True)
+args = parser.parse_args()
+google_key = args.google_key
 
 
 class TESTSforDATASETclass(unittest.TestCase):
@@ -45,10 +49,6 @@ class TESTSforDATASETclass(unittest.TestCase):
         self.assertEqual(outmsg, test_msg, msg=outmsg)
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--google_key", required=True)
-    args = parser.parse_args()
-    google_key = args.google_key
 
     unittest.main()
     # suite_case = unittest.TestLoader().loadTestsFromTestCase(TESTSforDATASETclass)
