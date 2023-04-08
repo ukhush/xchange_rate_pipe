@@ -48,13 +48,12 @@ class BQdataset:
             dataset = bigquery.Dataset(dataset_ref)
             dataset.location = location
             dataset = self.client.create_dataset(dataset)
-            print(f"Created dataset {self.project}.{dataset.dataset_id}")
             datasets = list(self.client.list_datasets())
             print(f"New dataset list {[d.dataset_id for d in datasets]}")
 
         else:
             print("Dataset already there")
-        return None
+        return f"Created dataset {self.project}.{dataset.dataset_id}"
 
     def list_datasets(self, stroutput=True):
         datasets = list(self.client.list_datasets())  # Make an API request.
@@ -76,5 +75,4 @@ class BQdataset:
 
     def delete_dataset(self, dataset_id):
         self.client.delete_dataset(dataset_id, delete_contents=True, not_found_ok=True)
-        print(f"Deleted dataset {dataset_id}")
-        return None
+        return f"Deleted dataset {dataset_id}"

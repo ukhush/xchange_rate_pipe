@@ -1,18 +1,13 @@
 from google.cloud import bigquery
 from src.bigquery_crud_ops import BQdataset
-import os
 import argparse
 from google.oauth2 import service_account
 import json
-import sys
-
+import unittest
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--google_key", required=True)
-
 args = parser.parse_args()
-
-
 
 # Downloaded credentials in JSON format
 
@@ -32,22 +27,24 @@ gcp_sa_credentials = {
 gcp_sa_credentials["private_key"] = json.loads(args.google_key)
 
 project_id = gcp_sa_credentials["project_id"]
-
 credentials = service_account.Credentials.from_service_account_info(gcp_sa_credentials)
 client = bigquery.Client(project=project_id, credentials=credentials)
 
 
-def unit_test_class_dataset(dataset_name):
+class TESTSforDATASETclass(unittest.TestCase):
 
-    bqdataset = BQdataset(client)
-    bqdataset.create_dataset(dataset_name, 'US')
-    bqdataset.get_dataset(dataset_name)
+    def TEST1(self):
+        bqdataset = BQdataset(client)
+        project = bqdataset.project()
+        outmsg = bqdataset.create_dataset('TEST_dataset', 'US')
+        test_msg = f"Created dataset {project}.TEST_dataset"
+        self.assertEqual(outmsg, test_msg, msg=outmsg)
 
-    bqdataset.delete_dataset(dataset_name)
+    def TEST2(self):
+        bqdataset = BQdataset(client)
+        outmsg = bqdataset.delete_dataset('TEST_dataset')
+        test_msg = "Deleted dataset TEST_dataset"
+        self.assertEqual(outmsg, test_msg, msg=outmsg)
 
-    return print('PASSED')
-
-
-# Test the func
-if __name__ == "__main__":
-    unit_test_class_dataset('test1')
+if __name__ == '__main__':
+    unittest.main()
