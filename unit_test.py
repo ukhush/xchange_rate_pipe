@@ -25,7 +25,7 @@ class TESTSforDATASETclass(unittest.TestCase):
         "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/ukhushn-try%40ukhushn-proj2.iam.gserviceaccount.com"
     }
 
-    gcp_sa_credentials["private_key"] = json.loads(args.google_key)
+    gcp_sa_credentials["private_key"] = json.loads(google_key)
 
     project_id = gcp_sa_credentials["project_id"]
     credentials = service_account.Credentials.from_service_account_info(gcp_sa_credentials)
@@ -48,9 +48,11 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("--google_key", required=True)
     args = parser.parse_args()
+    google_key = args.google_key
 
-    suite_case = unittest.TestLoader().loadTestsFromTestCase(TESTSforDATASETclass)
-    test_suite = unittest.TestSuite([suite_case])
-    unittest.TextTestRunner(verbosity=1, failfast=True, buffer=False).run(test_suite)
+    unittest.main()
+    # suite_case = unittest.TestLoader().loadTestsFromTestCase(TESTSforDATASETclass)
+    # test_suite = unittest.TestSuite([suite_case])
+    # unittest.TextTestRunner(verbosity=1, failfast=True, buffer=False).run(test_suite)
 
 
