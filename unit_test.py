@@ -56,7 +56,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
     google_key = args.google_key
 
-    suite_case = unittest.TestLoader().loadTestsFromTestCase(TESTSforDATASETclass(google_key))
+    suite_case = unittest.TestLoader().loadTestsFromTestCase(TESTSforDATASETclass)
     test_suite = unittest.TestSuite([suite_case])
     unittest.TextTestRunner(verbosity=1, failfast=True, buffer=False).run(test_suite)
 
